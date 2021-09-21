@@ -1,17 +1,36 @@
-import React from "react";
-import Header from "./Header";
-import NotFound from "./NotFound";
+import React from "react"
+import { Switch, Route } from "react-router-dom"
 
-function Layout() {
+import Header from "./Header"
+import CreateDeck from "./CreateDeck"
+import StudyDeck from "./StudyDeck"
+import ViewDeck from "./ViewDeck"
+import NotFound from "./NotFound"
+
+const Layout = () => {
+
   return (
     <>
       <Header />
       <div className="container">
-        {/* TODO: Implement the screen starting here */}
-        <NotFound />
+        <Switch>
+          <Route path="/decks/new">
+            <CreateDeck />
+          </Route>
+          <Route path ="decks/:deckId/study">
+            <StudyDeck />
+          </Route>
+          <Route path="decks/:deckId">
+            <ViewDeck />
+          </Route>
+          <Route>
+            <NotFound />
+          </Route>
+        </Switch>
       </div>
     </>
-  );
+  )
+
 }
 
-export default Layout;
+export default Layout
