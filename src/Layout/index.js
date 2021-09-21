@@ -2,6 +2,7 @@ import React from "react"
 import { Switch, Route } from "react-router-dom"
 
 import Header from "./Header"
+import DeckList from "./DeckList"
 import CreateDeck from "./CreateDeck"
 import StudyDeck from "./StudyDeck"
 import ViewDeck from "./ViewDeck"
@@ -14,13 +15,16 @@ const Layout = () => {
       <Header />
       <div className="container">
         <Switch>
-          <Route path="/decks/new">
+          <Route exact path = "/">
+            <DeckList />
+          </Route>
+          <Route path = "/decks/new">
             <CreateDeck />
           </Route>
-          <Route path ="decks/:deckId/study">
+          <Route path = "decks/:deckId/study">
             <StudyDeck />
           </Route>
-          <Route path="decks/:deckId">
+          <Route exact path = "decks/:deckId">
             <ViewDeck />
           </Route>
           <Route>

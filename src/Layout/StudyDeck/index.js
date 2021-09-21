@@ -4,13 +4,11 @@ import React from "react"
 // Restart prompt window.confirm()
 
 const StudyDeck = () => {
-
     return (
         <h1>
             Study Deck screen
         </h1>
     )
-
 }
 
 export default StudyDeck
