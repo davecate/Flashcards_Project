@@ -1,10 +1,19 @@
 import React from "react"
 
+import DeckForm from "../Common/Forms/DeckForm"
+
 const CreateDeck = () => {
-    return (
-        <h1>
-            Create Deck screen
-        </h1>
+
+  // blank deck allows form component to run
+  const noDeck = { name: "", id: "new", description: "" }
+  
+  return (
+    <div className="container">
+      <h1>
+        Create Deck
+      </h1>
+      <DeckForm deck={noDeck} />
+    </div>
     )
 }
 

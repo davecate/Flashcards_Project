@@ -6,14 +6,14 @@ import { deleteDeck } from "../../utils/api"
 const Deck = ( { deck = { cards: [] } } ) => {
   const history = useHistory()
 
-  const deleteHandler = () => {
-    const confirm = window.confirm("Do you really want to delete this deck?")
-    confirm === true ? deleteDeck(deck.id) : history.push("/")
+  const handleDelete = async () => {
+    const confirm = window.confirm("Do you really want to delete this deck? It will be gone forever.")
+    confirm === true ? await deleteDeck(deck.id) && window.location.reload() : history.push("/")
   }
 
   return (
-    <div className="container">
-      <div className="row">
+    <div className="container border border-secondary my-1 py-1 by-1">
+      <div className="row my-1">
         <div className="col text-left">
           <h5>{deck.name}</h5>
         </div>
@@ -22,7 +22,7 @@ const Deck = ( { deck = { cards: [] } } ) => {
         </div>
       </div>
       <p>{deck.description}</p>
-      <div className="row">
+      <div className="row my-1">
         <div className="col">
           <Link to={ "/decks/" + deck.id } className="btn btn-secondary">View</Link>
         </div>
@@ -30,7 +30,7 @@ const Deck = ( { deck = { cards: [] } } ) => {
           <Link to={ "/decks/" + deck.id + "/study" } className="btn btn-primary">Study</Link>
         </div>
         <div className = "col">
-          <button type="button" className="btn btn-danger" onClick={deleteHandler}>Delete</button>
+          <button type="button" className="btn btn-danger" onClick={handleDelete}>Delete</button>
         </div>
       </div>
     </div>

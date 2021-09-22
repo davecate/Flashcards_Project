@@ -18,25 +18,25 @@ const Layout = () => {
       <Header />
       <div className = "container">
         <Switch>
-          <Route exact path = "/">
+          <Route exact path="/">
             <DeckList />
           </Route>
-          <Route path = "/decks/:deckId/study">
+          <Route path="/decks/:deckId/study">
             <StudyDeck />
           </Route>
-          <Route path = "/decks/new">
+          <Route path="/decks/new">
             <CreateDeck />
           </Route>
-          <Route exact path = "/decks/:deckId">
+          <Route path="/decks/:deckId">
             <ViewDeck />
           </Route>
-          <Route path = "/decks/:deckId/edit">
+          <Route path="/decks/:deckId/edit">
             <EditDeck />
           </Route>
-          <Route path = "/decks/:deckId/cards/new">
+          <Route path="/decks/:deckId/cards/new">
             <AddCard />
           </Route>
-          <Route path = "/decks/:deckId/cards/:cardId/edit">
+          <Route path="/decks/:deckId/cards/:cardId/edit">
             <EditCard />
           </Route>
           <Route>

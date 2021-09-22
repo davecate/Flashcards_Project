@@ -5,8 +5,7 @@ import { listDecks } from "../../utils/api"
 
 import Deck from "./Deck"
 
-const DeckList = () => {
-
+const DeckList = ( { setDeck } ) => {
   const [ decks, setDecks ] = useState([])
 
   // API hook to fetch decks
@@ -31,16 +30,14 @@ const DeckList = () => {
     loadDecks()
 
     return cleanup
-  }, [])
-
-  console.log(decks)
+  }, [setDecks])
 
   const list = decks.map((deck) => <Deck key={deck.id} deck={deck} />)
 
   return (
-    <main className = "container">
-      <section className = "col">
-        <Link to = "/decks/new" className = "btn btn-secondary">+ Create Deck</Link>
+    <main className="container">
+      <section className="col">
+        <Link to="/decks/new" className="btn btn-secondary" >+ Create Deck</Link>
         {list}
       </section>
     </main>
