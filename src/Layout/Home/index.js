@@ -5,10 +5,9 @@ import { listDecks } from "../../utils/api"
 
 import Deck from "./Deck"
 
-const DeckList = ( { setDeck } ) => {
+const DeckList = () => {
   const [ decks, setDecks ] = useState([])
 
-  // API hook to fetch decks
   useEffect(() => {
     setDecks([])
     const abortController = new AbortController()
@@ -16,7 +15,6 @@ const DeckList = ( { setDeck } ) => {
     const cleanup = () => abortController.abort
 
     const loadDecks = async () => {
-
       try {
         const decksData = await listDecks(abortSignal)
         setDecks(decksData)
@@ -24,7 +22,6 @@ const DeckList = ( { setDeck } ) => {
         if (error.name === "Aborted") {console.log("Aborted")}
         else {throw error}
       }
-
     }
 
     loadDecks()
@@ -35,7 +32,7 @@ const DeckList = ( { setDeck } ) => {
   const list = decks.map((deck) => <Deck key={deck.id} deck={deck} />)
 
   return (
-    <main className="container">
+    <main className="container mb-4">
       <section className="col">
         <Link to="/decks/new" className="btn btn-secondary" >+ Create Deck</Link>
         {list}

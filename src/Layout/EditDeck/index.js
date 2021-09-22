@@ -1,13 +1,15 @@
 import React from "react"
 
-// Form submit links to ViewDeck
+import DeckForm from "../Common/Forms/DeckForm"
 
-const EditDeck = () => {
-    return (
-        <h1>
-            Edit Deck screen
-        </h1>
-    )
+const EditDeck = ( { deck } ) => {
+
+  return (
+    <div className="container">
+      <h1>Edit Deck</h1>
+      <DeckForm deck={deck} />
+    </div>
+  )
 }
 
 export default EditDeck

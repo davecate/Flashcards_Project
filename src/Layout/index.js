@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Switch, Route } from "react-router-dom"
 
 import Header from "./Common/Header"
@@ -12,6 +12,9 @@ import NotFound from "./Common/NotFound"
 import StudyDeck from "./Study"
 
 const Layout = () => {
+
+  const [ deck, setDeck ] = useState({})
+  const [ card, setCard ] = useState({})
  
   return (
     <>
@@ -27,17 +30,17 @@ const Layout = () => {
           <Route path="/decks/new">
             <CreateDeck />
           </Route>
-          <Route path="/decks/:deckId">
-            <ViewDeck />
+          <Route exact path="/decks/:deckId">
+            <ViewDeck deck={deck} setDeck={setDeck} />
           </Route>
           <Route path="/decks/:deckId/edit">
-            <EditDeck />
+            <EditDeck deck={deck} />
           </Route>
           <Route path="/decks/:deckId/cards/new">
-            <AddCard />
+            <AddCard deck={deck} card={card} setCard={setCard} />
           </Route>
           <Route path="/decks/:deckId/cards/:cardId/edit">
-            <EditCard />
+            <EditCard deck={deck} card={card} setCard={setCard} />
           </Route>
           <Route>
             <NotFound />

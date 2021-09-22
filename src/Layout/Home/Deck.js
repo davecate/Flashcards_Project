@@ -4,6 +4,7 @@ import { Link, useHistory } from "react-router-dom"
 import { deleteDeck } from "../../utils/api"
 
 const Deck = ( { deck = { cards: [] } } ) => {
+  
   const history = useHistory()
 
   const handleDelete = async () => {
@@ -12,7 +13,7 @@ const Deck = ( { deck = { cards: [] } } ) => {
   }
 
   return (
-    <div className="container border border-secondary my-1 py-1 by-1">
+    <div className="rounded container border border-secondary mt-1 py-1 by-1">
       <div className="row my-1">
         <div className="col text-left">
           <h5>{deck.name}</h5>

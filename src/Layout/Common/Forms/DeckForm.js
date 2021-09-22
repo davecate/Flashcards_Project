@@ -64,14 +64,8 @@ const DeckForm = ( { deck } ) => {
           onChange={handleChange}
           value={formData.description}/>
       </div>
-      <Link
-        to={toParent}
-        type="button" 
-        className="btn btn-secondary" 
-        >Cancel</Link>
-      <button 
-       type="submit" 
-        className="btn btn-primary">Submit</button>
+      <Link to={toParent} type="button"  className="btn btn-secondary px-2">Cancel</Link>
+      <button type="submit" className="btn btn-primary px-2 mx-1">Submit</button>
     </form>
   )
 
