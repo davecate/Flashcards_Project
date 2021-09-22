@@ -27,16 +27,16 @@ const Layout = () => {
           <Route path = "/decks/new">
             <CreateDeck />
           </Route>
-          <Route exact path = {"/decks/:deckId"}>
+          <Route exact path = "/decks/:deckId">
             <ViewDeck />
           </Route>
-          <Route path = {"/decks/:deckId/edit"}>
+          <Route path = "/decks/:deckId/edit">
             <EditDeck />
           </Route>
-          <Route path = {"/decks/:deckId/cards/new"}>
+          <Route path = "/decks/:deckId/cards/new">
             <AddCard />
           </Route>
-          <Route path = {"/decks/:deckId/cards/:cardId/edit"}>
+          <Route path = "/decks/:deckId/cards/:cardId/edit">
             <EditCard />
           </Route>
           <Route>
