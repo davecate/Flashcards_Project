@@ -7,13 +7,12 @@ const DeckInfo = ( { deck } ) => {
   const herstory = useHistory()
   const url = useRouteMatch().url
 
-  const confirmMeDaddy = "Do you really want to delete this deck? It will be gone forever."
+  const confirmMeDaddy = "Delete this deck?"
 
   const handleDelete = async () => {
     const confirm = window.confirm(confirmMeDaddy)
     confirm === true ? 
     await deleteDeck(deck.id) && herstory.push("/") : herstory.push(url)
-    window.location.reload()
   }
 
   return (

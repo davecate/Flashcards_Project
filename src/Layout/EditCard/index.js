@@ -22,7 +22,7 @@ const EditCard = ( { deck, card, setCard } ) => {
   }, [cardId, setCard])
 
   return (
-    <div className="container">
+    <div className="container mb-4">
       <h1>Edit Card</h1>
       <CardForm deck={deck} card={card} setCard={setCard}/>
     </div>

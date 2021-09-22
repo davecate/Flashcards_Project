@@ -8,7 +8,7 @@ const Card = ( { card } ) => {
   const history = useHistory()
   const url = useRouteMatch().url
 
-  const confirmMeDaddy = "Do you really want to delete this card? It will be gone forever."
+  const confirmMeDaddy = "Delete this card?"
 
   const handleDelete = async () => {
     const confirm = window.confirm(confirmMeDaddy)

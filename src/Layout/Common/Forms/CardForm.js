@@ -7,8 +7,6 @@ import { updateCard } from "../../../utils/api"
 
 const CardForm = ( { card, setCard } ) => {
 
-  console.log(card)
-
   const history = useHistory()
   const toParent = "/decks/" + card.deckId
 
@@ -21,7 +19,7 @@ const CardForm = ( { card, setCard } ) => {
   }
 
   const cardSubmit = async (data, signal) => {
-    await card.id === "new" ? createCard(card.deckId, data, signal) : updateCard(data, signal)
+    !card.id ? await createCard(card.deckId, data, signal) : await updateCard(data, signal)
   }
   
   const handleSubmit = async (event) => {

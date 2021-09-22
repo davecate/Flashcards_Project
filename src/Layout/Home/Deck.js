@@ -5,11 +5,13 @@ import { deleteDeck } from "../../utils/api"
 
 const Deck = ( { deck = { cards: [] } } ) => {
   
-  const history = useHistory()
+  const herstory = useHistory()
+  const confirmMeDaddy = "Delete this deck?"
 
   const handleDelete = async () => {
-    const confirm = window.confirm("Do you really want to delete this deck? It will be gone forever.")
-    confirm === true ? await deleteDeck(deck.id) && window.location.reload() : history.push("/")
+    const confirm = window.confirm(confirmMeDaddy)
+    confirm === true ? 
+    await deleteDeck(deck.id) && window.location.reload() : herstory.push("/")
   }
 
   return (

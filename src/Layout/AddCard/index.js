@@ -7,9 +7,11 @@ const AddCard = ( { deck, card, setCard } ) => {
   const { deckId } = useRouteMatch().params
     
   useEffect(() => {
-    const loadBlankCard = async () => await setCard({ front: "", back: "", id: "new", deckId: deckId})
+    const loadBlankCard = async () => await setCard({ front: "", back: "", deckId: deckId})
     loadBlankCard()
-  }, [setCard, deckId])
+  }, [deckId, setCard])
+
+  console.log(card)
 
   return (
     <div className="container pb-4">
