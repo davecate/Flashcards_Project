@@ -1,7 +1,7 @@
 import React from "react"
 import { Link, useHistory, useRouteMatch } from "react-router-dom"
 
-import { deleteDeck } from "../../../utils/api"
+import { deleteDeck } from "../../../../utils/api"
 
 const DeckInfo = ( { deck } ) => {
   const herstory = useHistory()

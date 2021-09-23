@@ -1,6 +1,6 @@
 import React from "react"
 
-import DeckForm from "../Common/Forms/DeckForm"
+import DeckForm from "../DeckForm"
 import Breadcrumb from "./Breadcrumb"
 
 const EditDeck = ( { deck, setDeck } ) => {

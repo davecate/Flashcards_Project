@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { useRouteMatch } from "react-router-dom"
 
-import CardForm from "../Common/Forms/CardForm"
+import CardForm from "../CardForm"
 import Breadcrumb from "./Breadcrumb"
 
 const AddCard = ( { deck, card, setCard } ) => {

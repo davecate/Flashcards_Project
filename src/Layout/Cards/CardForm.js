@@ -1,57 +1,56 @@
 import React from "react"
 import { Link, useHistory } from "react-router-dom"
 
-import { createDeck } from "../../../utils/api"
-import { updateDeck } from "../../../utils/api"
+import { createCard } from "../../utils/api"
+import { updateCard } from "../../utils/api"
 
 
-const DeckForm = ( { deck, setDeck } ) => {
+const CardForm = ( { card, setCard } ) => {
 
   const handleChange = ( { target } ) => {
     const value = target.value
-    setDeck( { 
-      ...deck, 
+    setCard( { 
+      ...card, 
       [target.name]: value 
     } )
   }
 
-  const deckSubmit = async (data, signal) => {
-    !deck.id? await createDeck(data, signal) : await updateDeck(data, signal)
+  const cardSubmit = async (data, signal) => {
+    !card.id ? await createCard(card.deckId, data, signal) : await updateCard(data, signal)
   }
+
   const herstory = useHistory()
-  const toParent = !deck.id? "/" : "/decks/" + deck.id
+  const toParent = "/decks/" + card.deckId
   
   const handleSubmit = async (event) => {
     event.preventDefault()
     const abortController = new AbortController()
     const abortSignal = abortController.signal
-    await deckSubmit(deck, abortSignal)
+    await cardSubmit(card, abortSignal)
     herstory.push(toParent)
   }
 
   return (
     <form onSubmit={handleSubmit} className="mb-4">
       <div className="form-group">
-        <label htmlFor="name">Name</label>
-        <textarea
-          rows="1"
+        <label htmlFor="Front">Front</label>
+        <textarea 
+          rows="3" 
           className="form-control" 
-          id="name" 
-          name="name"
+          id="front" 
+          name="front"
           onChange={handleChange}
-          value={deck.name}
-          placeholder="Deck Name"/>
+          value={card.front}/>
       </div>
       <div className="form-group">
-        <label htmlFor="description">Description</label>
+        <label htmlFor="back">Back</label>
         <textarea
           rows="3"
           className="form-control" 
-          id="description" 
-          name="description"
+          id="back" 
+          name="back"
           onChange={handleChange}
-          value={deck.description}
-          placeholder="Brief description of the deck"/>
+          value={card.back}/>
       </div>
       <Link to={toParent} type="button"  className="btn btn-secondary px-2">Cancel</Link>
       <button type="submit" className="btn btn-primary px-2 mx-1">Submit</button>
@@ -60,4 +59,4 @@ const DeckForm = ( { deck, setDeck } ) => {
 
 }
 
-export default DeckForm
+export default CardForm

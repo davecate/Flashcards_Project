@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 
-import DeckForm from "../Common/Forms/DeckForm"
+import DeckForm from "../DeckForm"
 import Breadcrumb from "./Breadcrumb"
 
 const CreateDeck = ( { deck, setDeck } ) => {

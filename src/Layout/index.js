@@ -2,14 +2,14 @@ import React, { useState } from "react"
 import { Switch, Route } from "react-router-dom"
 
 import Header from "./Common/Header"
-import DeckList from "./Home"
-import CreateDeck from "./CreateDeck"
-import ViewDeck from "./ViewDeck"
-import EditDeck from "./EditDeck"
-import AddCard from "./AddCard"
-import EditCard from "./EditCard"
+import DeckList from "./Decks/Home/DeckList"
+import Study from "./Study"
+import CreateDeck from "./Decks/CreateDeck"
+import ViewDeck from "./Decks/ViewDeck"
+import EditDeck from "./Decks/EditDeck"
+import AddCard from "./Cards/AddCard"
+import EditCard from "./Cards/EditCard"
 import NotFound from "./Common/NotFound"
-import StudyDeck from "./Study"
 
 const Layout = () => {
 
@@ -18,7 +18,7 @@ const Layout = () => {
   const [ cards, setCards ] = useState([])
  
   return (
-    <>
+    <div>
       <Header />
       <div className = "container">
         <Switch>
@@ -26,7 +26,7 @@ const Layout = () => {
             <DeckList setDeck={setDeck}/>
           </Route>
           <Route path="/decks/:deckId/study">
-            <StudyDeck deck={deck} setDeck={setDeck} card={card} setCard={setCard} cards={cards} setCards={setCards}/>
+            <Study deck={deck} setDeck={setDeck} card={card} setCard={setCard} cards={cards} setCards={setCards}/>
           </Route>
           <Route path="/decks/new">
             <CreateDeck deck={deck} setDeck={setDeck}/>
@@ -48,7 +48,7 @@ const Layout = () => {
           </Route>
         </Switch>
       </div>
-    </>
+    </div>
   )
 
 }

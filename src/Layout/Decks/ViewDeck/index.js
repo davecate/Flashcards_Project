@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { useRouteMatch } from "react-router-dom"
 
-import { readDeck, listCards } from "../../utils/api"
+import { readDeck, listCards } from "../../../utils/api"
 
 import Breadcrumb from "./Components/Breadcrumb"
 import Card from "./Components/Card"

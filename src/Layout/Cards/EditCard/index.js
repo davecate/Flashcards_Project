@@ -1,9 +1,9 @@
 import React, { useEffect } from "react"
 import { useRouteMatch } from "react-router"
 
-import { readCard } from "../../utils/api"
+import { readCard } from "../../../utils/api"
 
-import CardForm from "../Common/Forms/CardForm"
+import CardForm from "../CardForm"
 import Breadcrumb from "./Breadcrumb"
 
 const EditCard = ( { deck, card, setCard } ) => {

@@ -2,11 +2,12 @@ import React, { useEffect } from "react"
 import { useRouteMatch } from "react-router-dom"
 
 import { readDeck, listCards } from "../../utils/api"
+
 import Breadcrumb from "./Components/Breadcrumb"
 import CardDisplay from "./Components/CardDisplay"
 import NotEnoughCards from "./Components/NotEnoughCards"
 
-const StudyDeck = ( { deck, setDeck, cards, setCards, card, setCard, } ) => {
+const Study = ( { deck, setDeck, cards, setCards, card, setCard, } ) => {
   const { deckId } = useRouteMatch().params
 
   useEffect(() => {
@@ -54,4 +55,4 @@ const StudyDeck = ( { deck, setDeck, cards, setCards, card, setCard, } ) => {
   )
 }
 
-export default StudyDeck
+export default Study
