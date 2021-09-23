@@ -1,16 +1,18 @@
-import React from "react"
+import React, { useEffect } from "react"
 
 import DeckForm from "../Common/Forms/DeckForm"
 
-const CreateDeck = () => {
+const CreateDeck = ( { deck, setDeck } ) => {
 
-  // blank deck allows form component to run
-  const blankDeck = { name: "", id: "new", description: "" }
+  useEffect(() => {
+    const loadBlankDeck = async () => await setDeck({ name: "", description: "",})
+    loadBlankDeck()
+  }, [setDeck])
   
   return (
     <div className="container">
       <h1>Create Deck</h1>
-      <DeckForm deck={blankDeck} />
+      <DeckForm deck={deck} setDeck={setDeck} />
     </div>
     )
 }

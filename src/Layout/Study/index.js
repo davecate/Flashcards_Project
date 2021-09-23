@@ -1,5 +1,7 @@
 import React from "react"
 
+import NotEnoughCards from "./NotEnoughCards"
+
 // Conditional render: not enough cards -- links to AddCard
 // Restart prompt window.confirm()
 

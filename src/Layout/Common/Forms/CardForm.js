@@ -7,9 +7,6 @@ import { updateCard } from "../../../utils/api"
 
 const CardForm = ( { card, setCard } ) => {
 
-  const history = useHistory()
-  const toParent = "/decks/" + card.deckId
-
   const handleChange = ( { target } ) => {
     const value = target.value
     setCard( { 
@@ -21,15 +18,16 @@ const CardForm = ( { card, setCard } ) => {
   const cardSubmit = async (data, signal) => {
     !card.id ? await createCard(card.deckId, data, signal) : await updateCard(data, signal)
   }
+
+  const herstory = useHistory()
+  const toParent = "/decks/" + card.deckId
   
   const handleSubmit = async (event) => {
     event.preventDefault()
     const abortController = new AbortController()
-    const signal = abortController.signal
-
-    await cardSubmit(card, signal)
-
-    history.push(toParent)
+    const abortSignal = abortController.signal
+    await cardSubmit(card, abortSignal)
+    herstory.push(toParent)
   }
 
   return (

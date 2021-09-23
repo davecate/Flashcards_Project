@@ -1,45 +1,32 @@
-import React, { useState } from "react"
+import React from "react"
 import { Link, useHistory } from "react-router-dom"
 
 import { createDeck } from "../../../utils/api"
 import { updateDeck } from "../../../utils/api"
 
 
-const DeckForm = ( { deck } ) => {
-  
-  const typeCheck = (create, edit) => deck.id === "new" ? create : edit
-
-  const history = useHistory()
-  const toParent = typeCheck("/", ("/decks/" + deck.id))
-
-  const initialFormState = typeCheck({ name: "", description: "", }, 
-  { name: deck.name, id: deck.id, description: deck.description, }) 
-
-  const [formData, setFormData] = useState( { ...initialFormState } )
+const DeckForm = ( { deck, setDeck } ) => {
 
   const handleChange = ( { target } ) => {
     const value = target.value
-    setFormData( { 
-      ...formData, 
+    setDeck( { 
+      ...deck, 
       [target.name]: value 
     } )
   }
 
   const deckSubmit = async (data, signal) => {
-    await deck.id === "new" ? createDeck(data, signal) : updateDeck(data, signal)
+    !deck.id? await createDeck(data, signal) : await updateDeck(data, signal)
   }
+  const herstory = useHistory()
+  const toParent = !deck.id? "/" : "/decks/" + deck.id
   
   const handleSubmit = async (event) => {
     event.preventDefault()
-
     const abortController = new AbortController()
-    const signal = abortController.signal
-
-    await deckSubmit(formData, signal)
-
-    setFormData( { ...initialFormState } )
-
-    history.push(toParent)
+    const abortSignal = abortController.signal
+    await deckSubmit(deck, abortSignal)
+    herstory.push(toParent)
   }
 
   return (
@@ -52,7 +39,7 @@ const DeckForm = ( { deck } ) => {
           id="name" 
           name="name"
           onChange={handleChange}
-          value={formData.name}/>
+          value={deck.name}/>
       </div>
       <div className="form-group">
         <label htmlFor="description">Description</label>
@@ -62,7 +49,7 @@ const DeckForm = ( { deck } ) => {
           id="description" 
           name="description"
           onChange={handleChange}
-          value={formData.description}/>
+          value={deck.description}/>
       </div>
       <Link to={toParent} type="button"  className="btn btn-secondary px-2">Cancel</Link>
       <button type="submit" className="btn btn-primary px-2 mx-1">Submit</button>

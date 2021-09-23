@@ -25,16 +25,16 @@ const Layout = () => {
             <DeckList />
           </Route>
           <Route path="/decks/:deckId/study">
-            <StudyDeck />
+            <StudyDeck card={card} setCard={setCard}/>
           </Route>
           <Route path="/decks/new">
-            <CreateDeck />
+            <CreateDeck deck={deck} setDeck={setDeck}/>
           </Route>
           <Route exact path="/decks/:deckId">
             <ViewDeck deck={deck} setDeck={setDeck} />
           </Route>
           <Route path="/decks/:deckId/edit">
-            <EditDeck deck={deck} />
+            <EditDeck deck={deck} setDeck={setDeck} />
           </Route>
           <Route path="/decks/:deckId/cards/new">
             <AddCard deck={deck} card={card} setCard={setCard} />
