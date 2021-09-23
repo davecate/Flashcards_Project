@@ -5,7 +5,7 @@ import { listDecks } from "../../utils/api"
 
 import Deck from "./Deck"
 
-const DeckList = () => {
+const DeckList = ( { setDeck } ) => {
   const [ decks, setDecks ] = useState([])
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const DeckList = () => {
     return cleanup
   }, [setDecks])
 
-  const list = decks.map((deck) => <Deck key={deck.id} deck={deck} />)
+  const list = decks.map((deck) => <Deck key={deck.id} deck={deck} setDeck={setDeck} />)
 
   return (
     <main className="container mb-4">

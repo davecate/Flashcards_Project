@@ -5,7 +5,7 @@ import { deleteCard } from "../../utils/api"
 
 const Card = ( { card } ) => {
 
-  const history = useHistory()
+  const herstory = useHistory()
   const url = useRouteMatch().url
 
   const confirmMeDaddy = "Delete this card?"
@@ -13,17 +13,21 @@ const Card = ( { card } ) => {
   const handleDelete = async () => {
     const confirm = window.confirm(confirmMeDaddy)
     confirm === true ? 
-    await deleteCard(card.id) && history.push(url) : history.push(url)
+    await deleteCard(card.id) && herstory.push(url) : herstory.push(url)
     window.location.reload()
   }
 
   return (
-    <div className="card">
-          <p className="text-left">{card.front}</p>
-          <p className="text-right">{card.back}</p>
-          <Link to={"/decks/" + card.deckId + "/cards/" + card.id + "/edit"}
-            className="btn btn-secondary">Edit</Link>
-          <button className="btn btn-danger" onClick={handleDelete}>Delete</button>
+    <div className="card my-2">
+      <div className="container mt-2">
+        <p className="text-left">{card.front}</p>
+      </div>
+      <div className="container">
+        <p className="text-right">{card.back}</p>
+      </div>
+      <Link to={"/decks/" + card.deckId + "/cards/" + card.id + "/edit"}
+        className="btn btn-secondary">Edit</Link>
+      <button className="btn btn-danger" onClick={handleDelete}>Delete</button>
     </div>
     )
 

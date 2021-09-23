@@ -22,10 +22,10 @@ const Layout = () => {
       <div className = "container">
         <Switch>
           <Route exact path="/">
-            <DeckList />
+            <DeckList setDeck={setDeck}/>
           </Route>
           <Route path="/decks/:deckId/study">
-            <StudyDeck card={card} setCard={setCard}/>
+            <StudyDeck deck={deck} setDeck={setDeck} card={card} setCard={setCard}/>
           </Route>
           <Route path="/decks/new">
             <CreateDeck deck={deck} setDeck={setDeck}/>
