@@ -1,16 +1,18 @@
 import React, { useEffect } from "react"
 
 import DeckForm from "../Common/Forms/DeckForm"
+import Breadcrumb from "./Breadcrumb"
 
 const CreateDeck = ( { deck, setDeck } ) => {
 
   useEffect(() => {
-    const loadBlankDeck = async () => await setDeck({ name: "", description: "",})
+    const loadBlankDeck = () => setDeck({ name: "", description: "",})
     loadBlankDeck()
   }, [setDeck])
   
   return (
     <div className="container">
+      <Breadcrumb />
       <h1>Create Deck</h1>
       <DeckForm deck={deck} setDeck={setDeck} />
     </div>

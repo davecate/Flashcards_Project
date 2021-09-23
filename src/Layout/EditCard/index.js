@@ -4,6 +4,7 @@ import { useRouteMatch } from "react-router"
 import { readCard } from "../../utils/api"
 
 import CardForm from "../Common/Forms/CardForm"
+import Breadcrumb from "./Breadcrumb"
 
 const EditCard = ( { deck, card, setCard } ) => {
   const { cardId } = useRouteMatch().params
@@ -22,9 +23,12 @@ const EditCard = ( { deck, card, setCard } ) => {
   }, [cardId, setCard])
 
   return (
-    <div className="container mb-4">
-      <h1>Edit Card</h1>
-      <CardForm deck={deck} card={card} setCard={setCard}/>
+    <div className="container">
+      <div className="col">
+        <Breadcrumb deck={deck} card={card} />
+        <h1>Edit Card</h1>
+        <CardForm deck={deck} card={card} setCard={setCard}/>
+      </div>
     </div>
     )
 }

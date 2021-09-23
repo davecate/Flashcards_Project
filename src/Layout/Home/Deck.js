@@ -3,11 +3,9 @@ import { Link, useHistory } from "react-router-dom"
 
 import { deleteDeck } from "../../utils/api"
 
-const Deck = ( { deck = { cards: [] }, setDeck } ) => {
+const Deck = ( { deck } ) => {
   
   const herstory = useHistory()
-
-  const handleStudy = setDeck(deck)
 
   const handleDelete = async () => {
     const confirmMeDaddy = "Delete this deck?"
@@ -32,7 +30,7 @@ const Deck = ( { deck = { cards: [] }, setDeck } ) => {
           <Link to={ "/decks/" + deck.id } className="btn btn-secondary">View</Link>
         </div>
         <div className = "col">
-          <Link to={ "/decks/" + deck.id + "/study" } className="btn btn-primary" onclick={handleStudy}>Study</Link>
+          <Link to={ "/decks/" + deck.id + "/study" } className="btn btn-primary">Study</Link>
         </div>
         <div className = "col">
           <button type="button" className="btn btn-danger" onClick={handleDelete}>Delete</button>

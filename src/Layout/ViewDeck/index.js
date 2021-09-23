@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import { useRouteMatch } from "react-router-dom"
 
 import { readDeck, listCards } from "../../utils/api"
 
-import Card from "./Card"
-import DeckInfo from "./DeckInfo"
+import Breadcrumb from "./Components/Breadcrumb"
+import Card from "./Components/Card"
+import DeckInfo from "./Components/DeckInfo"
 
-const ViewDeck = ( { deck, setDeck, setCard } ) => {
+const ViewDeck = ( { deck, setDeck, cards, setCards } ) => {
   const { deckId } = useRouteMatch().params
-
-  const [ cards, setCards ] = useState([])
 
   useEffect(() => {
     setCards([])
@@ -34,11 +33,12 @@ const ViewDeck = ( { deck, setDeck, setCard } ) => {
     return cleanup
   }, [deckId, setDeck, setCards])
 
-  const list = cards.map((card) => <Card key={card.id} card={card} setCard={setCard} />)
+  const list = cards.map((card, index) => <Card key={index} card={card} front={card.front} back={card.back} />)
 
     return (
       <main className="container">
         <div className="col">
+          <Breadcrumb deck={deck} />
           <DeckInfo deck={deck} />
           <div className="row mt-4">
             <div className="col">

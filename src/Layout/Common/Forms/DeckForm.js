@@ -30,16 +30,17 @@ const DeckForm = ( { deck, setDeck } ) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="mb-4">
       <div className="form-group">
         <label htmlFor="name">Name</label>
-        <input 
-          type="text" 
+        <textarea
+          rows="1"
           className="form-control" 
           id="name" 
           name="name"
           onChange={handleChange}
-          value={deck.name}/>
+          value={deck.name}
+          placeholder="Deck Name"/>
       </div>
       <div className="form-group">
         <label htmlFor="description">Description</label>
@@ -49,7 +50,8 @@ const DeckForm = ( { deck, setDeck } ) => {
           id="description" 
           name="description"
           onChange={handleChange}
-          value={deck.description}/>
+          value={deck.description}
+          placeholder="Brief description of the deck"/>
       </div>
       <Link to={toParent} type="button"  className="btn btn-secondary px-2">Cancel</Link>
       <button type="submit" className="btn btn-primary px-2 mx-1">Submit</button>

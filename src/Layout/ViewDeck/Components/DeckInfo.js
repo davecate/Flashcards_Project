@@ -1,7 +1,7 @@
 import React from "react"
 import { Link, useHistory, useRouteMatch } from "react-router-dom"
 
-import { deleteDeck } from "../../utils/api"
+import { deleteDeck } from "../../../utils/api"
 
 const DeckInfo = ( { deck } ) => {
   const herstory = useHistory()
@@ -19,7 +19,7 @@ const DeckInfo = ( { deck } ) => {
     <div className="rounded border border-secondary p-2">
       <div className="row">
         <div className="col">
-          <h3>{deck.name} Deck</h3>
+          <h3>{deck.name}</h3>
           <p>{deck.description}</p>
         </div>
       </div>

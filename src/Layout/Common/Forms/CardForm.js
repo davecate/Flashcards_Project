@@ -31,7 +31,7 @@ const CardForm = ( { card, setCard } ) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="mb-4">
       <div className="form-group">
         <label htmlFor="Front">Front</label>
         <textarea 

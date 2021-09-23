@@ -1,69 +1,56 @@
-import React, { useEffect, useState } from "react"
-import { Link, useHistory, useRouteMatch } from "react-router-dom"
+import React, { useEffect } from "react"
+import { useRouteMatch } from "react-router-dom"
 
-import { readDeck } from "../../utils/api"
+import { readDeck, listCards } from "../../utils/api"
+import Breadcrumb from "./Components/Breadcrumb"
+import CardDisplay from "./Components/CardDisplay"
+import NotEnoughCards from "./Components/NotEnoughCards"
 
-const StudyDeck = ( { deck, setDeck, card, setCard } ) => {
-  console.log(card)
-  const herstory = useHistory()
+const StudyDeck = ( { deck, setDeck, cards, setCards, card, setCard, } ) => {
   const { deckId } = useRouteMatch().params
-  const [ flip, setFlip ] = useState(false)
 
   useEffect(() => {
+    setCards([])
     const abortController = new AbortController()
     const abortSignal = abortController.signal
     const cleanup = () => abortController.abort
-    
+
     const loadDeck = async () => {
-      setFlip(false)
       try {
         const deckData = await readDeck(deckId, abortSignal)
+        const cardsData = await listCards(deckId, abortSignal)
         setDeck(deckData)
-        setCard(deckData.cards[0])
-        } catch (error) {
-          if (error.name === "Aborted") {console.log("Aborted")}
-          else {throw error}
-        }
+        setCards(cardsData)
+        setCard(cardsData[0])
+      } catch (error) {
+        if (error.name === "Aborted") {console.log("Aborted")}
+        else {throw error}
+      }
     }
 
     loadDeck()
+
     return cleanup
-  }, [deckId, setDeck, setCard, setFlip])
+  }, [deckId, setDeck, setCard, setCards])
 
-  const flipCard = () => setFlip(!flip)
-  const drawLastCard = () => setCard(deck.cards[deck.cards.length])
-  const drawNextCard = () => setCard(deck.cards[card.id])
-  const drawCard = () => deck.cards.length === card.id ? drawLastCard() : drawNextCard()
+  const cardDisplay = card ? 
+    <CardDisplay 
+      card={card} 
+      setCard={setCard}
+      cards={cards}  />
+    :
+    <h4>Loading...</h4>
 
-  const handleReset = async () => {
-    const confirmMeDaddy = "Reset cards? Click 'Cancel' to return to the home page."
-    const confirm = window.confirm(confirmMeDaddy)
-    confirm === true ? 
-      await setCard(deck.cards[0]) : herstory.go("/")
-  }
-
-  const handleNext = async () => flipCard() && card.id === deck.cards.length ? 
-    await handleReset() : drawCard()
-
-  const nextCard = flip === true ? 
-  (<Link to="#" className="card-link btn btn-primary" onClick={() => handleNext()}>Next</Link>) : null
-
-  const cardText = flip === true ? card.back : card.front
+  const display = cards.length > 2 ? cardDisplay : <NotEnoughCards deck={deck} cards={cards} />
 
   return (
     <div className="container">
+      <Breadcrumb deck={deck} />
       <h1>    
-        Now Studying {deck.name}
+        {deck.name}
       </h1>
-      <div className="card" >
-      <div className="card-body">
-        <h5 className="card-title">Card {card.id} of {deck.cards.length}</h5>
-        <p className="card-text">{cardText}</p>
-        <Link to="#" className="card-link btn btn-secondary" onClick={flipCard}>Flip</Link>
-        {nextCard}
-      </div>
+      {display}
     </div>
-  </div>
   )
 }
 

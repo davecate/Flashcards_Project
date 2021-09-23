@@ -1,46 +1,69 @@
 {
   "decks": [
     {
-      "name": "Rendering in React",
-      "id": 1,
-      "description": "React's component structure allows for quickly building a complex web application that relies on DOM manipulation."
+      "name": "Deck",
+      "description": "The First Deck",
+      "id": 1
     },
     {
-      "name": "Router Doubter",
-      "description": "Doubt about her router switch",
+      "name": "Deck II",
+      "description": "Son of Deck",
       "id": 2
+    },
+    {
+      "name": "Deck III",
+      "description": "Deck Returns",
+      "id": 3
     }
   ],
   "cards": [
     {
-      "front": "First card front",
-      "back": "First card back",
+      "front": "FRONT OF \nDeck ONE\nCard ONE",
+      "back": "BACK OF\nDeck ONE\nCard ONE",
       "deckId": 1,
       "id": 1
     },
     {
-      "front": "Second card front",
-      "back": "second card back",
+      "front": "FRONT OF \nDeck ONE\nCard TWO",
+      "back": "BACK OF \nDeck ONE\nCard TWO",
       "deckId": 1,
       "id": 2
     },
     {
-      "front": "Third card front",
-      "back": "Third card back",
+      "front": "FRONT OF \nDeck ONE\nCard THREE",
+      "back": "BACK OF \nDeck ONE\nCard THREE",
       "deckId": 1,
       "id": 3
     },
     {
-      "front": "Undoubtedly this is the front",
-      "back": "Unroutedly this is the back",
+      "front": "FRONT OF \nDeck TWO\nCard ONE",
+      "back": "BACK OF \nDeck TWO\nCard ONE",
       "deckId": 2,
       "id": 4
     },
     {
-      "front": "About the front",
-      "back": "About the back",
+      "front": "FRONT OF \nDeck TWO\nCard TWO",
+      "back": "BACK OF \nDeck TWO\nCard TWO",
       "deckId": 2,
       "id": 5
+    },
+    {
+      "front": "FRONT OF\nDeck ONE\nCard FOUR",
+      "back": "BACK OF\nDeck ONE\nCard FOUR",
+      "deckId": 1,
+      "id": 6
+    },
+    {
+      "front": "FRONT OF\nDeck THREE\nCard ONE",
+      "back": "BACK OF\nDeck THREE\nCard ONE",
+      "deckId": 3,
+      "id": 7
+    },
+    {
+      "front": "FRONT OF\nDeck THREE\nCard TWO",
+      "back": "BACK OF\nDeck THREE\nCard TWO",
+      "deckId": 3,
+      "id": 8
     }
   ]
 }

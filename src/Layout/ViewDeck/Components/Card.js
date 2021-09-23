@@ -1,9 +1,9 @@
 import React from "react"
 import { Link, useHistory, useRouteMatch } from "react-router-dom"
 
-import { deleteCard } from "../../utils/api"
+import { deleteCard } from "../../../utils/api"
 
-const Card = ( { card } ) => {
+const Card = ( { card, front, back } ) => {
 
   const herstory = useHistory()
   const url = useRouteMatch().url
@@ -20,10 +20,10 @@ const Card = ( { card } ) => {
   return (
     <div className="card my-2">
       <div className="container mt-2">
-        <p className="text-left">{card.front}</p>
+        <p className="text-left">{front}</p>
       </div>
       <div className="container">
-        <p className="text-right">{card.back}</p>
+        <p className="text-right">{back}</p>
       </div>
       <Link to={"/decks/" + card.deckId + "/cards/" + card.id + "/edit"}
         className="btn btn-secondary">Edit</Link>

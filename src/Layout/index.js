@@ -15,6 +15,7 @@ const Layout = () => {
 
   const [ deck, setDeck ] = useState({})
   const [ card, setCard ] = useState({})
+  const [ cards, setCards ] = useState([])
  
   return (
     <>
@@ -25,13 +26,13 @@ const Layout = () => {
             <DeckList setDeck={setDeck}/>
           </Route>
           <Route path="/decks/:deckId/study">
-            <StudyDeck deck={deck} setDeck={setDeck} card={card} setCard={setCard}/>
+            <StudyDeck deck={deck} setDeck={setDeck} card={card} setCard={setCard} cards={cards} setCards={setCards}/>
           </Route>
           <Route path="/decks/new">
             <CreateDeck deck={deck} setDeck={setDeck}/>
           </Route>
           <Route exact path="/decks/:deckId">
-            <ViewDeck deck={deck} setDeck={setDeck} />
+            <ViewDeck deck={deck} setDeck={setDeck} setCard={setCard} cards={cards} setCards={setCards} />
           </Route>
           <Route path="/decks/:deckId/edit">
             <EditDeck deck={deck} setDeck={setDeck} />
