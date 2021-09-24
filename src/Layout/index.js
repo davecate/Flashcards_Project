@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Switch, Route } from "react-router-dom"
-import Header from "./Common/Header"
+import Header from "./Header"
 import DeckList from "./Decks/Home/DeckList"
 import Study from "./Decks/Study"
 import CreateDeck from "./Decks/CreateDeck"
@@ -8,7 +8,7 @@ import ViewDeck from "./Decks/ViewDeck"
 import EditDeck from "./Decks/EditDeck"
 import AddCard from "./Cards/AddCard"
 import EditCard from "./Cards/EditCard"
-import NotFound from "./Common/NotFound"
+import NotFound from "./NotFound"
 
 const Layout = () => {
 
