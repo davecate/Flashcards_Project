@@ -1,73 +1,73 @@
 {
   "decks": [
     {
-      "name": "Deck",
+      "name": "This Deck",
       "description": "The First Deck",
       "id": 1
     },
     {
-      "name": "Deck II",
-      "description": "Son of Deck",
+      "name": "That Deck",
+      "description": "Deck II: Son of Deck",
       "id": 2
     },
     {
-      "name": "Deck III",
-      "description": "Deck Returns",
+      "name": "The Other Deck",
+      "description": "Deck III: Deck Returns",
       "id": 3
     }
   ],
   "cards": [
     {
-      "front": "FRONT OF \nDeck ONE\nCard ONE",
-      "back": "BACK OF\nDeck ONE\nCard ONE",
+      "front": "Front of Card 1, This Deck",
+      "back": "Back of Card 1, This Deck",
       "deckId": 1,
       "id": 1
     },
     {
-      "front": "FRONT OF \nDeck ONE\nCard TWO",
-      "back": "BACK OF \nDeck ONE\nCard TWO",
+      "front": "Front of Card 2, This Deck",
+      "back": "Back of Card 2, This Deck",
       "deckId": 1,
       "id": 2
     },
     {
-      "front": "FRONT OF \nDeck ONE\nCard THREE",
-      "back": "BACK OF \nDeck ONE\nCard THREE",
+      "front": "Front of Card 3, This Deck",
+      "back": "Back of Card 3, This Deck",
       "deckId": 1,
       "id": 3
     },
     {
-      "front": "FRONT OF \nDeck TWO\nCard ONE",
-      "back": "BACK OF \nDeck TWO\nCard ONE",
+      "front": "Front of Card 4, That Deck",
+      "back": "Back of Card 4, That Deck",
       "deckId": 2,
       "id": 4
     },
     {
-      "front": "FRONT OF \nDeck TWO\nCard TWO",
-      "back": "BACK OF \nDeck TWO\nCard TWO",
+      "front": "Front of Card 5, That Deck",
+      "back": "Front of Card 5, That Deck",
       "deckId": 2,
       "id": 5
     },
     {
-      "front": "FRONT OF\nDeck ONE\nCard FOUR",
-      "back": "BACK OF\nDeck ONE\nCard FOUR",
+      "front": "Front of Card 6, This Deck",
+      "back": "Back of Card 6, This Deck",
       "deckId": 1,
       "id": 6
     },
     {
-      "front": "FRONT OF\nDeck THREE\nCard ONE",
-      "back": "BACK OF\nDeck THREE\nCard ONE",
+      "front": "Front of Card 7, the Other Deck",
+      "back": "Back of Card 7, the Other Deck",
       "deckId": 3,
       "id": 7
     },
     {
-      "front": "FRONT OF\nDeck THREE\nCard TWO",
-      "back": "BACK OF\nDeck THREE\nCard TWO",
+      "front": "Front of Card 8, the Other Deck",
+      "back": "Back of Card 8, the Other Deck",
       "deckId": 3,
       "id": 8
     },
     {
-      "front": "THE THIRD CARD OF DECK II ------- FRONT",
-      "back": "THE THIRD CARD OF DECK II ------- BACK",
+      "front": "Front of Card 9, That Deck",
+      "back": "Back of Card 9, That Deck",
       "deckId": 2,
       "id": 9
     }
