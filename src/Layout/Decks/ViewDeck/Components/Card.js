@@ -3,14 +3,15 @@ import { Link, useHistory, useRouteMatch } from "react-router-dom"
 
 import { deleteCard } from "../../../../utils/api"
 
-const Card = ( { card, front, back } ) => {
+const Card = ( { card } ) => {
 
+  // Hooks to send user to View Deck
   const herstory = useHistory()
   const url = useRouteMatch().url
 
-  const confirmMeDaddy = "Delete this card?"
-
+  // Dialog box: deletes card & keeps user on current screen, or keeps user on current screen
   const handleDelete = async () => {
+    const confirmMeDaddy = "Delete this card?"
     const confirm = window.confirm(confirmMeDaddy)
     confirm === true ? 
     await deleteCard(card.id) && herstory.push(url) : herstory.push(url)
@@ -20,13 +21,17 @@ const Card = ( { card, front, back } ) => {
   return (
     <div className="card my-2">
       <div className="container mt-2">
-        <p className="text-left">{front}</p>
+        {/* Front text of card */}
+        <p className="text-left">{card.front}</p>
       </div>
       <div className="container">
-        <p className="text-right">{back}</p>
+        {/* Back text of card */}
+        <p className="text-right">{card.back}</p>
       </div>
+      {/* Edit button: sends user to card form */}
       <Link to={"/decks/" + card.deckId + "/cards/" + card.id + "/edit"}
         className="btn btn-secondary">Edit</Link>
+      {/* Delete button */}
       <button className="btn btn-danger" onClick={handleDelete}>Delete</button>
     </div>
     )

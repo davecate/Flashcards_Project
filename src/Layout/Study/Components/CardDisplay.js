@@ -2,19 +2,26 @@ import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router"
 
 const CardDisplay = ( { card, setCard, cards } ) => {
+
+  // Hook to send user home
   const herstory = useHistory()
+
+  // State variables for managing cards
   const [ count, setCount ] = useState(1)
   const [ flip, setFlip ] = useState(false)
 
+  // Hook to draw a card using setState
   useEffect(() => {
     const loadCard = async () => setCard(cards[count-1])
     setFlip(false)
     loadCard()
   }, [setCard, cards, count])
 
-  const counterLimiter = Math.min(count+1, cards.length)
-  const setNextCard = () => setCount(counterLimiter)
+  // Draws next card by adjusting the count, limit count variable to deck length
+  const countLimiter = Math.min(count+1, cards.length)
+  const setNextCard = () => setCount(countLimiter)
   
+  // Dialog box: resets deck or sends user home
   const resetMeDaddy = () => {
     const confirmMeDaddy = "Reset cards? Click 'Cancel' to return to the home page."
     const confirm = window.confirm(confirmMeDaddy)
@@ -22,22 +29,25 @@ const CardDisplay = ( { card, setCard, cards } ) => {
     setFlip(false)
   }
   
+  // Click handler for Next button: draws a new card until the last card is drawn
+  // Uses conditional to open reset dialog on the last card
   const handleNext = () => count === cards.length ? resetMeDaddy() : setNextCard()
-  
-  const cardTitle = <h5 className="card-title">Card {count} of {cards.length}</h5>
+
+  // Conditional render: based on flip state, displays either front or back of card
   const cardText = flip ?  
     <p className="card-text">{card.back}</p> : <p className="card-text">{card.front}</p>
 
-  const flipCard = <button className="card-link btn btn-secondary" onClick={() => setFlip(!flip)}>Flip</button>
+  // Conditional render: shows Next button only when card is flipped
   const nextCard = flip ? 
     <button className="card-link btn btn-primary" onClick={() => handleNext()}>Next</button> : null
 
   return (
     <div className="card" >
       <div className="card-body">
-        {cardTitle}
+        <h5 className="card-title">Card {count} of {cards.length}</h5>
         {cardText}
-        {flipCard}
+        {/* Flip card button */}
+        <button className="card-link btn btn-secondary" onClick={() => setFlip(!flip)}>Flip</button>
         {nextCard}
       </div>
     </div>

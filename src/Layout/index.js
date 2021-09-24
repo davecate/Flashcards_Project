@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import { Switch, Route } from "react-router-dom"
-
 import Header from "./Common/Header"
 import DeckList from "./Decks/Home/DeckList"
 import Study from "./Study"
@@ -13,6 +12,7 @@ import NotFound from "./Common/NotFound"
 
 const Layout = () => {
 
+  // Lifted state variables for use in multiple screens
   const [ deck, setDeck ] = useState({})
   const [ card, setCard ] = useState({})
   const [ cards, setCards ] = useState([])
