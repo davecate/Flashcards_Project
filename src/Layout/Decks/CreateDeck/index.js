@@ -4,7 +4,7 @@ import Breadcrumb from "./Breadcrumb"
 
 const CreateDeck = ( { deck, setDeck } ) => {
 
-  // Hook to load blank deck into state (deck id is assigned at upload)
+  // Hook to load a blank deck when component is mounted (deck id is assigned at upload)
   useEffect(() => {
     const loadBlankDeck = () => setDeck({ name: "", description: "",})
     loadBlankDeck()
@@ -15,7 +15,7 @@ const CreateDeck = ( { deck, setDeck } ) => {
       {/* Breadcrumb style nav bar */}
       <Breadcrumb />
       <h1>Create Deck</h1>
-      {/* Deck form: receives blank deck from state via hook */}
+      {/* Deck form */}
       <DeckForm deck={deck} setDeck={setDeck} />
     </div>
     )

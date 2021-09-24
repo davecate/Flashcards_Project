@@ -2,7 +2,7 @@ import React, { useEffect } from "react"
 import { useRouteMatch } from "react-router-dom"
 import { readDeck } from "../../../utils/api"
 import Breadcrumb from "./Components/Breadcrumb"
-import Card from "./Components/Card"
+import CardList from "./Components/CardList"
 import DeckInfo from "./Components/DeckInfo"
 
 const ViewDeck = ( { deck, setDeck, cards, setCards } ) => {
@@ -10,7 +10,7 @@ const ViewDeck = ( { deck, setDeck, cards, setCards } ) => {
   // Hook to get deck id from route parameters
   const { deckId } = useRouteMatch().params
 
-  // Hook to load state variables using the api call readDeck()
+  // Hook to load the deck and its card using the api call readDeck()
   useEffect(() => {
     const abortController = new AbortController()
     const abortSignal = abortController.signal
@@ -33,28 +33,18 @@ const ViewDeck = ( { deck, setDeck, cards, setCards } ) => {
 
   }, [deckId, setDeck, setCards])
 
-  // List of cards displaying front text, back text, and actions (edit, delete)
-  const list = cards.map((card, index) => <Card key={index} card={card} />)
-
   return (
-    <main className="container">
+      <main className="container">
       <div className="col">
-        {/* Breadcrumb nav bar */}
-        <Breadcrumb deck={deck} />
-        {/* Deck info: displays title, description and actions (edit, study, add card, delete) */}
-        <DeckInfo deck={deck} />
-        <div className="row mt-4">
-          <div className="col">
-            <h3>Cards</h3>
+            {/* Breadcrumb nav bar */}
+            <Breadcrumb deck={deck} />
+            {/* Deck info: displays title, description and actions (edit, study, add card, delete) */}
+            <DeckInfo deck={deck} />
+            {/* Card list */}
+            <CardList cards={cards} />
           </div>
-        </div>
-        <div className="row mb-4">
-          <div className="col">
-            {list}
-          </div>
-        </div>
-      </div>
-    </main>
+        </main>
+    
   )
 
 }

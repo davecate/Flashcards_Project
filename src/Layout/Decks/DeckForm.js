@@ -1,13 +1,18 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Link, useHistory } from "react-router-dom"
 import { createDeck, updateDeck } from "../../utils/api"
 
 const DeckForm = ( { deck } ) => {
 
+  // State variable to ensure form inputs are controlled
   const [ formDeck, setFormDeck ] = useState(deck)
 
+  // Hook to ensure deck info is loaded every time the form component is mounted
+  // Handles an edge case where user reloads page on Edit Deck
+  useEffect(() => setFormDeck(deck), [setFormDeck, deck])
+
   // Hook and conditional: called together to send user elsewhere
-  // Sends user home if no deck id is present (Create), or sends them to View Deck (Edit)
+  // Sends user home if no deck id is present, otherwise sends them to View Deck
   const herstory = useHistory()
   const toParent = !deck.id? "/" : "/decks/" + deck.id
 

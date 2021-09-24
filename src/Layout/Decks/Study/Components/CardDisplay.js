@@ -10,16 +10,16 @@ const CardDisplay = ( { card, setCard, cards } ) => {
   const [ count, setCount ] = useState(1)
   const [ flip, setFlip ] = useState(false)
 
-  // Hook to draw a card using setState
+  // Hook to draw a card using state variables
   useEffect(() => {
-    const loadCard = async () => setCard(cards[count-1])
+    const loadCard = () => setCard(cards[count-1])
     setFlip(false)
     loadCard()
   }, [setCard, cards, count])
 
-  // Draws next card by adjusting the count, limit count variable to deck length
+  // Draws next card by adjusting the count state, limits count variable to deck length
   const countLimiter = Math.min(count+1, cards.length)
-  const setNextCard = () => setCount(countLimiter)
+  const drawNextCard = () => setCount(countLimiter)
   
   // Dialog box: resets deck or sends user home
   const resetMeDaddy = () => {
@@ -31,7 +31,7 @@ const CardDisplay = ( { card, setCard, cards } ) => {
   
   // Click handler for Next button: draws a new card until the last card is drawn
   // Uses conditional to open reset dialog on the last card
-  const handleNext = () => count === cards.length ? resetMeDaddy() : setNextCard()
+  const handleNext = () => count === cards.length ? resetMeDaddy() : drawNextCard()
 
   // Conditional render: based on flip state, displays either front or back of card
   const cardText = flip ?  

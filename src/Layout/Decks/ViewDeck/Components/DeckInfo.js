@@ -5,11 +5,11 @@ import { deleteDeck } from "../../../../utils/api"
 
 const DeckInfo = ( { deck } ) => {
 
-  // Hooks to send user elsewhere
+  // Hooks to send user elsewhere or keep them here
   const herstory = useHistory()
   const url = useRouteMatch().url
 
-  // Dialog box: deletes deck and sends user home, or keeps user on current screen
+  // Dialog box: deletes deck and sends user home, or keeps deck and keeps user here
   const deleteMeDaddy = async () => {
     const confirmMeDaddy = "Delete this deck?"
     const confirm = window.confirm(confirmMeDaddy)

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { useRouteMatch } from "react-router-dom"
-import { readDeck, listCards } from "../../utils/api"
+import { readDeck } from "../../../utils/api"
 import Breadcrumb from "./Components/Breadcrumb"
 import CardDisplay from "./Components/CardDisplay"
 import NotEnoughCards from "./Components/NotEnoughCards"
@@ -10,7 +10,7 @@ const Study = ( { deck, setDeck, cards, setCards, card, setCard, } ) => {
   // Hook to get deckId from route parameters
   const { deckId } = useRouteMatch().params
 
-  // Hook to set state variables using api calls readDeck() and listCards()
+  // Hook to set state variables using the api call readDeck()
   useEffect(() => {
     const abortController = new AbortController()
     const abortSignal = abortController.signal
@@ -19,10 +19,8 @@ const Study = ( { deck, setDeck, cards, setCards, card, setCard, } ) => {
     const loadStudy = async () => {
       try {
         const deckData = await readDeck(deckId, abortSignal)
-        const cardsData = await listCards(deckId, abortSignal)
         setDeck(deckData)
-        setCards(cardsData)
-        setCard(cardsData[0])
+        setCards(deckData.cards)
       } catch (error) {
         if (error.name === "Aborted") {console.log("Aborted")}
         else {throw error}
@@ -32,29 +30,19 @@ const Study = ( { deck, setDeck, cards, setCards, card, setCard, } ) => {
     loadStudy()
 
     return cleanup
-  }, [deckId, setDeck, setCard, setCards])
-
-  // Conditional render: displays a loading message while current card is being loaded
-  // Used as output of next conditional
-  const cardDisplay = card ? 
-    <CardDisplay 
-      card={card} 
-      setCard={setCard}
-      cards={cards}  />
-    :
-    <h4>Loading...</h4>
+  }, [deckId, setDeck, setCards])
 
   // Conditional render: displays an error message if the deck has under 3 cards
   // Otherwise displays the current card
-  const display = cards.length > 2 ? 
-    cardDisplay : <NotEnoughCards deck={deck} cards={cards} />
+  const cardDisplay = cards.length < 3 ? 
+    <NotEnoughCards deck={deck} cards={cards} /> : <CardDisplay card={card} setCard={setCard} cards={cards} /> 
 
   return (
     <div className="container">
       {/* "Breadcrumb" style nav bar */}
       <Breadcrumb deck={deck} />
-      <h1>{deck.name}</h1>
-      {display}
+      <h1>Study: {deck.name}</h1>
+      {cardDisplay}
     </div>
   )
 }

@@ -1,8 +1,33 @@
-import React from "react"
+import React, { useEffect } from "react"
+import { useRouteMatch } from "react-router"
+import { readDeck } from "../../../utils/api"
 import DeckForm from "../DeckForm"
 import Breadcrumb from "./Breadcrumb"
 
 const EditDeck = ( { deck, setDeck } ) => {
+
+  // Hook to pull deck id from route parameters
+  const { deckId } = useRouteMatch().params
+
+  // Hook to load deck information when component is mounted
+  useEffect(() => {
+    const abortController = new AbortController()
+    const abortSignal = abortController.signal
+
+    const loadDeck = async () => {
+
+      try {
+        const deckData = await readDeck(deckId, abortSignal)
+        setDeck(deckData)
+      } catch (error) {
+        if (error.name === "Aborted") {console.log("Aborted")}
+        else {throw error}
+      }
+    }
+    
+    loadDeck()
+
+  }, [deckId, setDeck])
 
   return (
     <div className="container">
@@ -10,7 +35,6 @@ const EditDeck = ( { deck, setDeck } ) => {
         {/* Breadcrumb style nav bar */}
         <Breadcrumb deck={deck} />
         <h1>Edit Deck</h1>
-        {/* Deck form: receives deck from state via View Deck screen */}
         <DeckForm deck={deck} setDeck={setDeck} />
       </div>
     </div>

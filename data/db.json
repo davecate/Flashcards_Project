@@ -14,11 +14,6 @@
       "name": "Deck III",
       "description": "Deck Returns",
       "id": 3
-    },
-    {
-      "name": "Check deck form",
-      "description": "Check deck form",
-      "id": 4
     }
   ],
   "cards": [
