@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Switch, Route } from "react-router-dom"
 import Header from "./Header"
-import DeckList from "./Decks/Home/DeckList"
+import Home from "./Decks/Home"
 import Study from "./Decks/Study"
 import CreateDeck from "./Decks/CreateDeck"
 import ViewDeck from "./Decks/ViewDeck"
@@ -26,7 +26,7 @@ const Layout = () => {
           {/* Home screen: a "create deck" button and list of decks 
           with buttons to view, study, and delete decks */}
           <Route exact path="/">
-            <DeckList 
+            <Home 
               setDeck={setDeck}
             />
           </Route>

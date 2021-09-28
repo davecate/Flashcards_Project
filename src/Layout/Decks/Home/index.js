@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import { listDecks } from "../../../utils/api"
 import Deck from "./Deck"
 
-const DeckList = ( { setDeck } ) => {
+const Home = ( { setDeck } ) => {
 
   // State variable for listing decks
   const [ decks, setDecks ] = useState([])
@@ -44,4 +44,4 @@ const DeckList = ( { setDeck } ) => {
   )
 }
 
-export default DeckList
+export default Home
